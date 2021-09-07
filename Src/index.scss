@@ -72,29 +72,23 @@ th {
   text-align: left;
 }
 body {
-  font-family: "halcom", sans-serif;
-  background: linear-gradient(
-    to right,
-    #153654,
-    #264f74,
-    #366a95,
-    #4686b8,
-    #56a3dc
-  );
+  background: url("./Assets/BG.png") no-repeat center center fixed;
+  background-size: cover;
+  background-position: top;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
+  height: 100%;
+  font-family: "Rajdhani";
 }
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 #app {
-  background: linear-gradient(
-    to right,
-    #153654,
-    #264f74,
-    #366a95,
-    #4686b8,
-    #56a3dc
+  background: radial-gradient(
+    3397.25% 1628.13% at 50% 27.13%,
+    rgba(19, 42, 73, 0) 0%,
+    rgba(10, 18, 29, 0.85) 100%
   );
-  height: auto !important;
+  height: 100%;
 }

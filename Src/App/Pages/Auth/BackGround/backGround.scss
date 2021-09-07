@@ -1,0 +1,28 @@
+.background {
+  height: 100%;
+  // background: rgba(10, 20, 32, 0.75);
+  background: linear-gradient(
+    90deg,
+    rgba(19, 42, 73, 0.75) 0%,
+    rgba(10, 18, 29, 0.75) 100%
+  );
+  padding: 50px;
+  .left-bottom-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 30%;
+  }
+  .container {
+    max-width: 40%;
+    margin: 50px auto;
+    background: rgba(10, 20, 32, 0.75);
+    // border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ffdd00, #fbb034) 1;
+    .login-section {
+      padding: 30px 50px 20px 50px;
+    }
+  }
+}

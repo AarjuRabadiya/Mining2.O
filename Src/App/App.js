@@ -5,16 +5,14 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+// import Container from "@material-ui/core/Container";
 import { Helmet } from "react-helmet";
-import * as variable from "Base/Variables";
 import i18n from "../i18";
 import "./app.scss";
 import Auth from "Components/HOC/Auth";
-import BgMining from "Pages/Dashboard/Mining/assets/bg-mining@2x.jpg";
-import BgBalance from "Pages/Dashboard/Balance/assets/bg-balance@2x.jpg";
+import BG from "../Assets/BG.png";
 
-const Login = lazy(() => import("Pages/Login/Login_Old"));
+const SignIn = lazy(() => import("Pages/Auth/SignIn"));
 const Mining = lazy(() => import("Pages/Dashboard/Mining/Mining"));
 const Mining2 = lazy(() => import("Pages/Dashboard/Mining2.0/Mining2"));
 const Profile = lazy(() => import("Pages/Dashboard/Profile/Profile"));
@@ -26,10 +24,8 @@ const Balance = lazy(() => import("Pages/Dashboard/Balance/Balance"));
 const Partners = lazy(() => import("Pages/Dashboard/Partners/Partners"));
 const Logout = lazy(() => import("Pages/Logout/Logout"));
 const SignUp = lazy(() => import("Pages/Login/SignUp"));
-const SignUpVerify = lazy(() => import("Pages/Login/SignUpVerify"));
 const Stats = lazy(() => import("Pages/Dashboard/Stats/Stats"));
 const Search = lazy(() => import("Pages/Search"));
-// const AssetsDetail = lazy(() => import("Pages/Search/AssetDetails"));
 const ForgotPassword = lazy(() => import("Pages/Login/Forgotpassword"));
 const ChangePassword = lazy(() => import("Pages/Login/ChangePassword"));
 const CloudMining = lazy(() =>
@@ -41,100 +37,20 @@ const JoinTeam = lazy(() => import("Pages/Dashboard/JoinTeam"));
 const Distance = lazy(() => import("Pages/Dashboard/Distance"));
 const AttackHistory = lazy(() => import("Pages/Dashboard/AttackHistory"));
 
-const GlobalStyle = createGlobalStyle`
-    html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}
-    h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
-    ul{list-style:none}
-    button,input,select,textarea{margin:0}
-    html{box-sizing:border-box}
-    *,*:before,*:after{box-sizing:inherit}
-    img,embed,iframe,object,audio,video{height:auto;max-width:100%}
-    iframe{border:0}table{border-collapse:collapse;border-spacing:0}
-    td,th{padding:0;text-align:left}
-    body { font-family:${variable.bodyFontFamily}; background-color:${variable.black}; -webkit-font-smoothing:antialiased; font-size: ${variable.textMedium}; }
-    html { font-size: 62.5%; /* Now 10px = 1rem! */ }
-
-    html, body, #app { height: 100%; }
-    html { height: 100%; }
-	  body { min-height: 100%; }
-
-    #app > div {
-      height: 100%;
-    }
-`;
-
-const AppContainer = styled.div``;
-
-const Bg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-
-  ${(props) =>
-    props.active
-      ? `
-		opacity: 1;
-	`
-      : null}
-`;
-
 export default class App extends React.Component {
-  /**
-   * Create the constructor
-   * @param props
-   *
-   */
   constructor(props) {
     super(props);
 
-    this.state = {
-      background: BgMining,
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    const imageList = [BgMining, BgBalance];
-    imageList.forEach((image) => {
-      new Image().src = image;
-    });
-
-    this.setState({ imageList: imageList });
-  }
-
-  /**
-   *
-   * Load the background for the page
-   * */
   loadBg = (key) => {
-    let backgrounds = {
-      mining: BgMining,
-      balance: BgBalance,
-    };
-
-    const keys = Object.keys(backgrounds);
-    let index;
-
-    keys.map(function (newKey, src) {
-      if (key === newKey) {
-        index = src;
-      }
-    });
-
-    this.setState({ background: index });
+    this.setState({ background: 0 });
   };
 
   render = (props) => {
-    const { background, imageList } = this.state;
-    const { AuthStore } = this.props;
-
     return (
-      <AppContainer background={background}>
+      <>
         {/*
 					Helmet provides an update to all of our SEO routing
 					SEO routing is all configured within the App.js file
@@ -168,24 +84,13 @@ export default class App extends React.Component {
           ]}
         />
 
-        <GlobalStyle />
-
-        {imageList &&
-          imageList.map((src, key) => {
-            return (
-              <Bg key={key} src={src} active={key === background} alt="" />
-            );
-          })}
-
-        <Router
-        //  basename={"/mining"}
-        >
+        <Router>
           <Suspense fallback="">
             <Switch>
               <Auth
                 exact
                 path="/login"
-                render={(props) => <Login {...props} i18n={i18n} />}
+                render={(props) => <SignIn {...props} i18n={i18n} />}
               />
               <Route
                 exact
@@ -350,7 +255,7 @@ export default class App extends React.Component {
             </Switch>
           </Suspense>
         </Router>
-      </AppContainer>
+      </>
     );
   };
 }

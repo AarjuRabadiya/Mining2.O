@@ -1,0 +1,74 @@
+.header {
+  display: flex;
+  color: #ffdd00;
+  width: 100%;
+  .link-button {
+    width: calc(100% / 3);
+    .custom-button {
+      background-color: unset !important;
+
+      text-transform: uppercase !important;
+      font-weight: bold !important;
+      font-size: 24px !important;
+      box-shadow: unset !important;
+      font-family: "Rajdhani" !important;
+      span {
+        background: -webkit-linear-gradient(360deg, #ffdd00, #fbb034);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+  .logo-section {
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .MuiAvatar-root {
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .image-section {
+      width: 124px;
+      height: 124px;
+    }
+  }
+  .menu-section {
+    display: flex;
+    width: calc(100% / 3);
+    justify-content: end;
+    .MuiButton-root {
+      text-transform: none !important;
+      font-size: 24px !important;
+      color: #ffdd00 !important;
+      font-family: "Nunito" !important;
+      span {
+        background: -webkit-linear-gradient(360deg, #ffdd00, #fbb034);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    .MuiPaper-root {
+      font-family: "Nunito" !important;
+      background-color: #ffdd00 !important;
+      color: #000 !important;
+    }
+    .MuiMenuItem-root {
+      font-family: "Nunito" !important;
+      font-size: 22px !important;
+    }
+  }
+  @media (max-width: 767px) {
+    .link-button {
+      display: none;
+    }
+    .logo-section {
+      display: none;
+    }
+    .menu-section {
+      display: none;
+    }
+  }
+}
