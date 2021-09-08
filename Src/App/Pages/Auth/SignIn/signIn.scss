@@ -1,1 +1,29 @@
-
+.sign-in {
+  .heading {
+    font-family: "Rajdhani";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .button-section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    .button-image-section {
+      width: 100%;
+    }
+  }
+  .alink {
+    font-family: "Nunito";
+    font-weight: bold !important;
+    font-size: 24px !important;
+    font-style: normal;
+    background: none;
+    border: none;
+  }
+}

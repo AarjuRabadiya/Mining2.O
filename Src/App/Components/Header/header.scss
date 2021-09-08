@@ -1,7 +1,8 @@
 .header {
   display: flex;
   color: #ffdd00;
-  width: 100%;
+  // width: 100%;
+  padding: 50px;
   .link-button {
     width: calc(100% / 3);
     .custom-button {

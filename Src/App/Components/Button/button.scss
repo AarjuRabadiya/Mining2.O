@@ -1,0 +1,53 @@
+.button {
+  border-radius: 5px !important;
+  border: none !important;
+  padding: 10px 50px !important;
+  font-family: "Rajdhani" !important;
+  font-style: normal !important;
+  font-weight: bold !important;
+  font-size: 24px !important;
+  text-transform: uppercase !important;
+}
+// #div-outer {
+// }
+
+#div-inner {
+  position: relative;
+  // height: 100px;
+  // width: 220px;
+  perspective: 50px;
+  &:before {
+    content: "";
+    padding: 17px 40px;
+    position: absolute;
+    border: 2px solid #fff;
+    width: 50%;
+    height: 38px;
+    border-radius: 5px;
+    -webkit-transform: rotateX(15deg) rotateY(25deg);
+    transform: rotateX(5deg) rotateY(3deg);
+    left: -4px;
+    z-index: 1;
+    top: -8px;
+  }
+  &:after {
+    content: "";
+    padding: 17px 40px;
+    position: absolute;
+    // top: 20px;
+    // left: 20px;
+    background: -webkit-linear-gradient(360deg, #ffdd00, #fbb034);
+    // width: 46%;
+    width: 50%;
+    height: 20px;
+    border-radius: 5px;
+    -webkit-transform: rotateX(15deg) rotateY(25deg);
+    transform: rotateX(5deg) rotateY(3deg);
+  }
+  .MuiTouchRipple-root {
+    z-index: 1;
+  }
+  .MuiButton-label {
+    z-index: 1;
+  }
+}

@@ -18,12 +18,13 @@ class BackGround extends React.Component {
     return (
       <div className="background">
         <Header history={history} />
-
-        <div className="left-bottom-section">
-          <img src={leftBottom} alt="" />
-        </div>
-        <div className="container">
-          <div className="login-section"> {this.props.children}</div>
+        <div className="bottom-section">
+          <div className="left-bottom-section">
+            <img src={leftBottom} alt="" />
+          </div>
+          <div className="container">
+            <div className="login-section"> {this.props.children}</div>
+          </div>
         </div>
       </div>
     );

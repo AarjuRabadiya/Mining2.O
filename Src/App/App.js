@@ -8,9 +8,9 @@ import {
 // import Container from "@material-ui/core/Container";
 import { Helmet } from "react-helmet";
 import i18n from "../i18";
-import "./app.scss";
+// import "./app.scss";
 import Auth from "Components/HOC/Auth";
-import BG from "../Assets/BG.png";
+// import BG from "../Assets/BG.png";
 
 const SignIn = lazy(() => import("Pages/Auth/SignIn"));
 const Mining = lazy(() => import("Pages/Dashboard/Mining/Mining"));
