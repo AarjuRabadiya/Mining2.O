@@ -19,13 +19,16 @@ input {
 ::-webkit-input-placeholder {
   /* Edge */
   color: #ffffff;
+  opacity: 0.65;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #ffffff;
+  opacity: 0.65;
 }
 
 ::placeholder {
   color: #ffffff;
+  opacity: 0.65;
 }

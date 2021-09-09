@@ -23,7 +23,7 @@ class BackGround extends React.Component {
             <img src={leftBottom} alt="" />
           </div>
           <div className="container">
-            <div className="login-section"> {this.props.children}</div>
+            <div className="login-section">{this.props.children}</div>
           </div>
         </div>
       </div>

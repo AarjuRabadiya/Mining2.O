@@ -16,6 +16,15 @@
     text-align: center;
     align-items: center;
   }
+  .sub-heading {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.65;
+  }
   .alink {
     font-family: "Nunito";
     font-weight: bold !important;
@@ -90,60 +99,5 @@
   }
   .MuiIconButton-root {
     padding: 12px 0 0 !important;
-  }
-}
-.MuiFormControl-root {
-  width: 100%;
-}
-.MuiFormControl-root {
-  &:focus-visible {
-    outline: none !important;
-  }
-  &:focus {
-    outline: none !important;
-  }
-}
-.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: unset !important;
-}
-.MuiOutlinedInput-root {
-  border: 1px solid #fff;
-
-  &:hover {
-    border: 1px solid #fff;
-  }
-  &:focus-visible {
-    outline: none !important;
-  }
-  &:focus {
-    outline: none !important;
-  }
-  .MuiSelect-icon {
-    color: #fff !important;
-  }
-  .MuiSelect-outlined.MuiSelect-outlined {
-    color: #fff;
-    outline: none !important;
-  }
-  .MuiOutlinedInput-notchedOutline {
-    &:focus-visible {
-      outline: none !important;
-    }
-    &:focus {
-      outline: none !important;
-    }
-  }
-}
-.sing-option {
-  padding: 10px !important;
-  margin-top: 10px !important;
-  &:before {
-    width: 100% !important;
-    left: -2% !important;
-    top: -10% !important;
-  }
-  &:after {
-    width: 100% !important;
-    left: 8px !important;
   }
 }

@@ -13,6 +13,7 @@ import Auth from "Components/HOC/Auth";
 // import BG from "../Assets/BG.png";
 
 const SignIn = lazy(() => import("Pages/Auth/SignIn"));
+const SignUp = lazy(() => import("Pages/Auth/SignUp"));
 const Mining = lazy(() => import("Pages/Dashboard/Mining/Mining"));
 const Mining2 = lazy(() => import("Pages/Dashboard/Mining2.0/Mining2"));
 const Profile = lazy(() => import("Pages/Dashboard/Profile/Profile"));
@@ -23,7 +24,7 @@ const Participation = lazy(() =>
 const Balance = lazy(() => import("Pages/Dashboard/Balance/Balance"));
 const Partners = lazy(() => import("Pages/Dashboard/Partners/Partners"));
 const Logout = lazy(() => import("Pages/Logout/Logout"));
-const SignUp = lazy(() => import("Pages/Login/SignUp"));
+// const SignUp = lazy(() => import("Pages/Login/SignUp"));
 const Stats = lazy(() => import("Pages/Dashboard/Stats/Stats"));
 const Search = lazy(() => import("Pages/Search"));
 const ForgotPassword = lazy(() => import("Pages/Login/Forgotpassword"));

@@ -40,8 +40,9 @@ button,
 input,
 select,
 textarea {
-  margin: 1rem 0px;
+  margin: 10px 0px;
 }
+
 // html {
 //   box-sizing: border-box;
 // }
@@ -101,6 +102,7 @@ html {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
 }
 .error-section {
   margin: 0.5rem;
@@ -115,9 +117,4 @@ html {
 }
 .error-color {
   color: #ff8486;
-}
-
-.yellow-button {
-  // background: -webkit-linear-gradient(360deg, #ffdd00, #fbb034) !important;
-  color: #122948 !important;
 }
