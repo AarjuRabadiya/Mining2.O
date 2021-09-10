@@ -3,6 +3,15 @@
   color: #ffdd00;
   // width: 100%;
   padding: 30px 50px;
+  .flex-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .rotate {
+    transform: rotate(180deg);
+  }
   .link-button {
     width: calc(100% / 3);
     .custom-button {
@@ -53,7 +62,7 @@
     }
     .MuiPaper-root {
       font-family: "Nunito" !important;
-      background-color: #ffdd00 !important;
+      background: linear-gradient(180deg, #ffdd00, #fbb034) !important;
       color: #000 !important;
     }
     .MuiMenuItem-root {

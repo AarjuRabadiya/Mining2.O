@@ -74,3 +74,23 @@
     color: #122948 !important;
   }
 }
+.back {
+  &:before {
+    height: 31% !important;
+    width: 10% !important;
+    left: 12% !important;
+  }
+  &:after {
+    width: 10% !important;
+    left: 20% !important;
+    height: 10% !important;
+  }
+}
+.reset {
+  &:before {
+    left: 10% !important;
+  }
+  &:after {
+    left: 15% !important;
+  }
+}

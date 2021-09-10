@@ -14,10 +14,14 @@ class BackGround extends React.Component {
   }
 
   render = () => {
-    const { history } = this.props;
+    const { history, i18n } = this.props;
     return (
       <div className="background">
-        <Header history={history} />
+        <Header
+          history={history}
+          i18n={i18n}
+          languages={i18n.options.languageOptions}
+        />
         <div className="bottom-section">
           <div className="left-bottom-section">
             <img src={leftBottom} alt="" />

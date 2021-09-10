@@ -5,6 +5,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 // import Container from "@material-ui/core/Container";
 import { Helmet } from "react-helmet";
 import i18n from "../i18";
@@ -14,6 +15,7 @@ import Auth from "Components/HOC/Auth";
 
 const SignIn = lazy(() => import("Pages/Auth/SignIn"));
 const SignUp = lazy(() => import("Pages/Auth/SignUp"));
+const ForgotPassword = lazy(() => import("Pages/Auth/ForgotPassword"));
 const Mining = lazy(() => import("Pages/Dashboard/Mining/Mining"));
 const Mining2 = lazy(() => import("Pages/Dashboard/Mining2.0/Mining2"));
 const Profile = lazy(() => import("Pages/Dashboard/Profile/Profile"));
@@ -27,7 +29,7 @@ const Logout = lazy(() => import("Pages/Logout/Logout"));
 // const SignUp = lazy(() => import("Pages/Login/SignUp"));
 const Stats = lazy(() => import("Pages/Dashboard/Stats/Stats"));
 const Search = lazy(() => import("Pages/Search"));
-const ForgotPassword = lazy(() => import("Pages/Login/Forgotpassword"));
+// const ForgotPassword = lazy(() => import("Pages/Login/Forgotpassword"));
 const ChangePassword = lazy(() => import("Pages/Login/ChangePassword"));
 const CloudMining = lazy(() =>
   import("Pages/Dashboard/CloudMining/CloudMining")
@@ -42,14 +44,23 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      isLoading: true,
+    };
   }
+
+  isLoadingFalse = () => {
+    this.setState({
+      isLoading: false,
+    });
+  };
 
   loadBg = (key) => {
     this.setState({ background: 0 });
   };
 
   render = (props) => {
+    let { isLoading } = this.state;
     return (
       <>
         {/*
@@ -85,28 +96,57 @@ export default class App extends React.Component {
           ]}
         />
 
+        {isLoading && (
+          <div className="loader">
+            <CircularProgress disableShrink />
+          </div>
+        )}
         <Router>
           <Suspense fallback="">
             <Switch>
               <Auth
                 exact
                 path="/login"
-                render={(props) => <SignIn {...props} i18n={i18n} />}
+                render={(props) => (
+                  <SignIn
+                    {...props}
+                    i18n={i18n}
+                    isLoadingFalse={() => this.isLoadingFalse()}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/signup"
-                render={(props) => <SignUp {...props} i18n={i18n} />}
+                render={(props) => (
+                  <SignUp
+                    {...props}
+                    i18n={i18n}
+                    isLoadingFalse={() => this.isLoadingFalse()}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/forgot-password"
-                render={(props) => <ForgotPassword {...props} i18n={i18n} />}
+                render={(props) => (
+                  <ForgotPassword
+                    {...props}
+                    i18n={i18n}
+                    isLoadingFalse={() => this.isLoadingFalse()}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/change-password/:token"
-                render={(props) => <ChangePassword {...props} i18n={i18n} />}
+                render={(props) => (
+                  <ChangePassword
+                    {...props}
+                    i18n={i18n}
+                    isLoadingFalse={() => this.isLoadingFalse()}
+                  />
+                )}
               />
               <Auth
                 exact
@@ -116,7 +156,13 @@ export default class App extends React.Component {
               <Route
                 exact
                 path="/search"
-                render={(props) => <Search {...props} i18n={i18n} />}
+                render={(props) => (
+                  <Search
+                    {...props}
+                    i18n={i18n}
+                    isLoadingFalse={() => this.isLoadingFalse()}
+                  />
+                )}
               />
               <Auth
                 exact

@@ -9,7 +9,7 @@ import BackGround from "../BackGround";
 import Social from "../Social";
 import Input from "Components/Input";
 import CommonButton from "Components/Button";
-
+import { validationForEmail } from "Base/Utilities";
 import "./signIn.scss";
 
 @inject("AuthStore")
@@ -27,7 +27,42 @@ class LoginContainer extends React.Component {
       isSignInLoading: false,
       errorMessage: "",
       error: false,
+      emailValidation: false,
+      passwordValidation: false,
     };
+  }
+
+  componentDidMount() {
+    const { AuthStore } = this.props;
+    this.props.isLoadingFalse();
+    AuthStore.logout();
+    if (
+      this.props.location &&
+      this.props.location.search.substr(
+        this.props.location.search.indexOf("=") + 1
+      )
+    ) {
+      let email = this.props.location.search.substr(
+        this.props.location.search.indexOf("=") + 1
+      );
+      let a = email.slice(0, email.indexOf("&"));
+
+      let payload = {
+        type: "CG",
+        email: a,
+      };
+      this.LoginWithSelect(payload);
+    }
+
+    if (localStorage.getItem("bearer_token_bridge") !== null) {
+      const ls = JSON.parse(localStorage.getItem("bearer_token_bridge"));
+
+      if (ls.token) {
+        AuthStore.setState("token", ls.token);
+        const { history } = this.props;
+        history.push("/dashboard/mining");
+      }
+    }
   }
   signInVia = () => {
     this.setState({
@@ -52,6 +87,15 @@ class LoginContainer extends React.Component {
   };
   setField = (event) => {
     event.preventDefault();
+
+    if (event.target.name === "email") {
+      this.setState({
+        emailValidation: validationForEmail(event.target.value),
+      });
+    }
+    if (event.target.name === "password") {
+      this.setState({ passwordValidation: event.target.value.length >= 7 });
+    }
     this.setState({ [event.target.name]: event.target.value, isError: false });
   };
   signIn = (event) => {
@@ -153,14 +197,13 @@ class LoginContainer extends React.Component {
   redirectExternalSite = (event) => {
     event.preventDefault();
     let { selectedOption } = this.state;
-    console.log(selectedOption, "====================================");
-    console.log("====================================");
+
     if (selectedOption === "Chainguardian") {
       window.location.replace("https://partner.nftmining.com/login");
     }
   };
   render = () => {
-    const { history } = this.props;
+    const { history, i18n } = this.props;
     let {
       isSelect,
       selectedOption,
@@ -169,10 +212,16 @@ class LoginContainer extends React.Component {
       error,
       email,
       password,
+      emailValidation,
+      passwordValidation,
     } = this.state;
 
     return (
-      <BackGround history={history}>
+      <BackGround
+        history={history}
+        i18n={i18n}
+        languages={i18n.options.languageOptions}
+      >
         <div className="sign-in">
           {isSelect ? (
             <>
@@ -232,21 +281,45 @@ class LoginContainer extends React.Component {
                       onChange={(e) => this.setField(e)}
                     />
                   </div>
+                  {email !== "" && !emailValidation && (
+                    <div className="form-error-section">
+                      <span className="error-color">
+                        Please enter valid email
+                      </span>
+                    </div>
+                  )}
                   <div>
                     <Input
                       type="password"
                       name="password"
                       placeholder="Enter password"
                       value={password}
+                      minlength="7"
+                      maxlength="10"
                       onChange={(e) => this.setField(e)}
                     />
                   </div>
+                  {password !== "" && !passwordValidation && (
+                    <div className="form-error-section">
+                      <span className="error-color">
+                        Please enter min 8 character
+                      </span>
+                    </div>
+                  )}
                   <div className="button-section margin-top">
                     <CommonButton
                       name="Sign In"
                       className="yellow-button"
                       onClick={(e) => this.signIn(e)}
                       isLoading={isSignInLoading}
+                      disabled={
+                        email !== "" &&
+                        emailValidation &&
+                        password !== "" &&
+                        passwordValidation
+                          ? false
+                          : true
+                      }
                     />
                   </div>
                   <div className="button-section margin-top">
