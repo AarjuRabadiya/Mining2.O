@@ -1,12 +1,14 @@
 .background {
   min-height: 100vh;
   // background: rgba(10, 20, 32, 0.75);
-  background: linear-gradient(
-    90deg,
-    rgba(19, 42, 73, 0.75) 0%,
-    rgba(10, 18, 29, 0.75) 100%
-  );
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(19, 42, 73, 0.75) 0%,
+  //   rgba(10, 18, 29, 0.75) 100%
+  // );
   position: relative;
+  max-width: 2500px;
+  margin: auto;
   // padding: 50px;
   .bottom-section {
     padding: 0 50px;
@@ -50,6 +52,7 @@
 @media (max-width: 767px) {
   .background {
     .bottom-section {
+      padding: 0;
       .container {
         max-width: 95%;
         margin: auto;

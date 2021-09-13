@@ -10,27 +10,7 @@
     align-items: center;
     text-align: center;
   }
-  .rotate {
-    transform: rotate(180deg);
-  }
-  .link-button {
-    width: calc(100% / 3);
-    .custom-button {
-      background-color: unset !important;
 
-      text-transform: uppercase !important;
-      font-weight: bold !important;
-      font-size: 20px !important;
-      box-shadow: unset !important;
-      font-family: "Rajdhani" !important;
-      span {
-        background: -webkit-linear-gradient(360deg, #ffdd00, #fbb034);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    }
-  }
   .logo-section {
     width: calc(100% / 3);
     display: flex;
@@ -76,10 +56,7 @@
   }
   @media (max-width: 767px) {
     display: block;
-    .link-button {
-      // display: none;
-      width: 100%;
-    }
+
     .logo-section {
       display: none;
     }

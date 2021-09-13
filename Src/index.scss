@@ -94,7 +94,8 @@ html {
     rgba(19, 42, 73, 0.75) 0%,
     rgba(10, 18, 29, 0.75) 100%
   );
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   .loader {
     display: flex !important;
     justify-content: center !important;
@@ -126,7 +127,7 @@ html {
   font-family: "Nunito";
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 .form-error-section {
   margin: 0 0.5rem;
@@ -137,7 +138,7 @@ html {
   font-family: "Nunito";
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 .error-color {
   color: #ff8486;

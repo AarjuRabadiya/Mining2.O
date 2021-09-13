@@ -1,10 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import i18n from "Src/i18";
 import i18next from "i18next";
-import * as variable from "Base/Variables";
-import { media } from "Base/Media";
-// import Button from "Components/Buttons/Button";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -59,35 +55,12 @@ export default class LanguageSelector extends React.Component {
     // this.forceUpdate();
   };
 
-  handleSearch = (e) => {
-    this.setState({
-      search: e.target.value,
-    });
-  };
-
-  searchRedirect = () => {
-    let { search } = this.state;
-    this.props.history.push({
-      pathname: "/search",
-      search_obj: search,
-    });
-  };
-  render = (props) => {
+  render = () => {
     const { languages } = this.props;
     const { open } = this.state;
 
     return (
       <div className="header">
-        <div className="link-button">
-          <Button
-            variant="contained"
-            color="primary"
-            className="custom-button"
-            onClick={() => this.searchRedirect()}
-          >
-            <span> Show All Assets</span>
-          </Button>
-        </div>
         <div className="logo-section">
           <div className="image-section">
             <Avatar alt="NFT Mining" src={LOGO} />
