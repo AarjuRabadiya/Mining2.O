@@ -1,10 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import i18n from "Src/i18";
 import i18next from "i18next";
-import * as variable from "Base/Variables";
-import { media } from "Base/Media";
-// import Button from "Components/Buttons/Button";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -12,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import LOGO from "./Assets/LOGO.png";
+import arrow from "./Assets/down-arrow.png";
 import "./header.scss";
 
 export default class LanguageSelector extends React.Component {
@@ -50,10 +47,11 @@ export default class LanguageSelector extends React.Component {
   };
 
   toggleSubMenu = (event) => {
+    event.preventDefault();
+
     const { open } = this.state;
     this.setState({ open: !open });
     if (event.key === "Tab") {
-      event.preventDefault();
       this.setState({ open: false });
     }
     // this.forceUpdate();
@@ -102,6 +100,9 @@ export default class LanguageSelector extends React.Component {
                 className="menu-button"
               >
                 <span>{this.getActiveLanguageMap(i18n.language)}</span>
+                <span className={`image-span ${open && "rotate"} `}>
+                  <img src={arrow} />
+                </span>
               </Button>
               {open && (
                 <Paper>
