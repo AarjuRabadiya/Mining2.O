@@ -100,6 +100,7 @@ export default class LanguageSelector extends React.Component {
                 className="menu-button"
               >
                 <span>{this.getActiveLanguageMap(i18n.language)}</span>
+
                 <span className={`image-span ${open && "rotate"} `}>
                   <img src={arrow} />
                 </span>

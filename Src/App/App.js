@@ -98,7 +98,7 @@ export default class App extends React.Component {
 
         {isLoading && (
           <div className="loader">
-            <CircularProgress disableShrink />
+            <CircularProgress disableShrink className="main-div-loader" />
           </div>
         )}
         <Router>
@@ -199,6 +199,7 @@ export default class App extends React.Component {
                     {...props}
                     i18n={i18n}
                     loadBg={(e) => this.loadBg(e)}
+                    isLoadingFalse={() => this.isLoadingFalse()}
                   />
                 )}
               />

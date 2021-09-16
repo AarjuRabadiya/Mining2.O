@@ -9,6 +9,7 @@ import MiningList from "./MiningList/MiningList";
 import Transition from "Components/Transition/Transition";
 import Layout from "Components/Layout/Layout";
 import PanelParticipating from "Components/Panel/PanelParticipating";
+import DashboardHeader from "Components/DashboardHeader";
 import Loader from "Components/Loader/Loader";
 import NoNFTs from "Components/NoNFTs/NoNFTs";
 
@@ -41,6 +42,7 @@ class MiningContainer extends React.Component {
     const { MiningStore, AuthStore, history } = this.props;
 
     this.props.loadBg("mining");
+    this.props.isLoadingFalse();
     this.setState(
       {
         cloudminingPool: JSON.parse(localStorage.getItem("cloudminingPool")),
@@ -183,71 +185,79 @@ class MiningContainer extends React.Component {
     let description = hasLoaded ? i18n.t("dashboard.mining.description") : null;
     let mm_title = hasLoaded ? i18n.t("login.connect.mm") : null;
     return (
-      <Layout
-        meta={meta}
-        title={title}
-        description={description}
-        mm_address={
-          this.props.AuthStore ? this.props.AuthStore.mm_address : mm_address
-        }
-        mm_title={mm_title}
-        connectMetaMask={() => this.connectMetaMask()}
-      >
-        {alert && (
-          <MainAlertDiv>
-            <Alert>
-              <Message>
-                <b>{alertmess}</b>
-              </Message>
-              <Close onClick={() => this.handleAlertClose()}>×</Close>
-            </Alert>
-          </MainAlertDiv>
-        )}
-        {tokens && tokens.length === 0 ? (
-          <NoNFTs i18n={i18n} />
-        ) : participating ? (
-          <Transition duration={2}>
-            <SectionContent>
-              {participating ? (
-                <PanelParticipating
-                  history={history}
-                  i18n={i18n}
-                  // title={i18n.t("dashboard.mining.currently_mining")}
-                  title={`You are currently ${mining_type} mining...`}
-                  nextWindow={nextWindow}
-                  hashrate={hashrate}
-                  ago={ago}
-                />
-              ) : null}
-            </SectionContent>
-          </Transition>
-        ) : (
-          <Transition duration={2}>
-            {/* Create the SectionContent wrapper */}
-            {/* Once user Selects an NFT we show them the mining list */}
-            {MiningStore.selectedCategory === null && tokens ? (
+      <>
+        <DashboardHeader
+          i18n={i18n}
+          history={history}
+          languages={i18n.options.languageOptions}
+        />
+        {/* <Layout
+          meta={meta}
+          title={title}
+          description={description}
+          mm_address={
+            this.props.AuthStore ? this.props.AuthStore.mm_address : mm_address
+          }
+          mm_title={mm_title}
+          connectMetaMask={() => this.connectMetaMask()}
+        >
+          {alert && (
+            <MainAlertDiv>
+              <Alert>
+                <Message>
+                  <b>{alertmess}</b>
+                </Message>
+                <Close onClick={() => this.handleAlertClose()}>×</Close>
+              </Alert>
+            </MainAlertDiv>
+          )}
+
+          {tokens && tokens.length === 0 ? (
+            <NoNFTs i18n={i18n} />
+          ) : participating ? (
+            <Transition duration={2}>
               <SectionContent>
-                {/* Allows user to Select the filtered NFT first */}
-                <SelectNFTs
-                  chooseNFT={(e) => this.selectNFT(e)}
-                  tokens={tokens}
-                />
+                {participating ? (
+                  <PanelParticipating
+                    history={history}
+                    i18n={i18n}
+                    
+                    title={`You are currently ${mining_type} mining...`}
+                    nextWindow={nextWindow}
+                    hashrate={hashrate}
+                    ago={ago}
+                  />
+                ) : null}
               </SectionContent>
-            ) : tokens ? (
-              <MiningList
-                {...this.props}
-                history={history}
-                MiningStore={MiningStore}
-                selectedCategory={selectedCategory}
-                tokens={tokens}
-                cloudminingPool={cloudminingPool}
-              />
-            ) : (
-              <Loader />
-            )}
-          </Transition>
-        )}
-      </Layout>
+            </Transition>
+          ) : (
+            <Transition duration={2}>
+              
+              {MiningStore.selectedCategory === null && tokens ? (
+                <SectionContent>
+                
+                  <SelectNFTs
+                    chooseNFT={(e) => this.selectNFT(e)}
+                    tokens={tokens}
+                  />
+                </SectionContent>
+              ) : tokens ? (
+                <MiningList
+                  {...this.props}
+                  history={history}
+                  MiningStore={MiningStore}
+                  selectedCategory={selectedCategory}
+                  tokens={tokens}
+                  cloudminingPool={cloudminingPool}
+                />
+              ) : (
+                <Loader />
+              )}
+            </Transition>
+          )}
+        </Layout>
+      */}
+      </>
     );
   };
 }
