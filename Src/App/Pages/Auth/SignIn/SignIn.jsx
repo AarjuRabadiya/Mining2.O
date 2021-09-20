@@ -115,6 +115,7 @@ class LoginContainer extends React.Component {
           this.setState({
             isSignInLoading: false,
           });
+
           if (res.error === 2) {
             this.setState({
               errorMessage: "please check your email to verify account",
@@ -131,7 +132,10 @@ class LoginContainer extends React.Component {
             this.resetState();
             history.push("/dashboard/mining");
           } else {
-            this.setState({ error: true, errorMessage: res.error });
+            this.setState({
+              error: true,
+              errorMessage: res.error,
+            });
             this.resetState();
             setTimeout(() => {
               this.removeError();

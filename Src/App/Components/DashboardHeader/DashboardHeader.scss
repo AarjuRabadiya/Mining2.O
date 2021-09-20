@@ -1,16 +1,28 @@
-.header {
+.dashboard-header {
   display: flex;
   color: #ffdd00;
   // width: 100%;
-  height: 120px;
+  height: 100px;
   background: linear-gradient(90deg, #0a121d 0%, #132a49 100%);
+  border-bottom: 1px solid #ffffff;
   .flex-div {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
-
+  .image-section {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .right-image-section {
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer;
+  }
   .logo-section {
     width: 10%;
     display: flex;
@@ -20,18 +32,14 @@
       width: 100% !important;
       height: 100% !important;
     }
-    .image-section {
-      width: 70px;
-      height: 70px;
-    }
   }
   .center-div {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     width: 80%;
     .link-button {
-      width: 75%;
+      width: 80%;
       text-align: end;
       .custom-button {
         background-color: unset !important;
@@ -51,13 +59,15 @@
     .image-span {
       display: flex;
       align-items: center;
+      width: 24px;
+      height: 24px;
     }
     .rotate {
       transform: rotate(180deg);
     }
     .menu-section {
-      width: 15%;
-
+      width: 10%;
+      text-align: end;
       // .menu-button {
       //   padding: 6px 40px !important;
       // }
@@ -87,20 +97,134 @@
   }
   .toggle-section {
     width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @media (max-width: 767px) {
     display: block;
-    .link-button {
+    .center-div {
       width: 100%;
+      justify-content: start;
+      .link-button {
+        width: auto;
+        text-align: unset;
+      }
+      .menu-section {
+        width: auto;
+        text-align: unset;
+      }
     }
+
     .logo-section {
       display: none;
     }
-    .menu-section {
-      width: 100%;
-      justify-content: flex-start;
-      // display: none;
+    .toggle-section {
+      width: 90%;
+      justify-content: flex-end;
     }
+    // .menu-section {
+    //   width: 100%;
+    //   justify-content: flex-start;
+    // }
+  }
+}
+.MuiPaper-root {
+  background: none !important;
+  color: #ffffff !important;
+}
+.MuiDrawer-paperAnchorTop {
+  height: 100% !important;
+}
+.open-menu-section {
+  background: #000 !important;
+}
+.bottom-section {
+  height: calc(100% - 100px);
+  .bottom-menu {
+    bottom: 0;
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: 50%;
+  }
+
+  a {
+    font-family: "Rajdhani" !important;
+    font-size: 24px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    width: calc(100% / 7);
+    text-align: center;
+    &:hover {
+      color: #fff !important;
+      background: #314157 !important;
+    }
+  }
+  .link-div {
+    padding: 40px 20px;
+  }
+  .active-link {
+    background: linear-gradient(360deg, #ffdd00, #fbb034);
+    svg {
+      path {
+        fill: #000 !important;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .open-menu-section {
+    display: flex !important;
+    align-items: center;
+    padding: 0 20px;
+    .logo-section {
+      display: flex !important;
+      align-items: center;
+    }
+  }
+  .bottom-section {
+    height: calc(100% - 100px);
+    .bottom-menu {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      font-size: 20px !important;
+      width: calc(100% / 2);
+    }
+    .link-div {
+      padding: 40px 20px;
+    }
+  }
+}
+@media (min-width: 1025px) and (max-width: 1580px) {
+  .bottom-section {
+    a {
+      font-size: 20px !important;
+      width: calc(100% / 5);
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .bottom-section {
+    a {
+      font-size: 20px !important;
+      width: calc(100% / 4);
+    }
+  }
+}
+@media (max-width: 320px) {
+  .link-text {
+    display: none;
   }
 }
